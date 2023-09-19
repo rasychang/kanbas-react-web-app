@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Course Details</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td valign="top">
+          <ul>
+            <li><a href="profile/index.html">Account</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="home.html">Courses</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Inbox</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Studio</a></li>
+            <li><a href="#">Commons</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </td>
+        <td valign="top" style="width: 200px">
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#">Modules</a></li>
+            <li><a href="#">Piazza</a></li>
+            <li><a href="#">Zoom Meetings</a></li>
+            <li><a href="assignments/index.html">Assignments</a></li>
+            <li><a href="#">Quizzes</a></li>
+            <li><a href="grade.html">Grades</a></li>
+            <li><a href="#">People</a></li>
+            <li><a href="#">Panopto Video</a></li>
+            <li><a href="#">Discussions</a></li>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Files</a></li>
+            <li><a href="#">Rubrics</a></li>
+            <li><a href="#">Outcomes</a></li>
+            <li><a href="#">Collaborations</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="course_details.html">Settings</a></li>
+          </ul>
+        </td>
+        <td valign="top">
+          <h1>Course Details</h1>
+          <form>
+            <label>Image:</label>
+            <input type="file" /><br />
+            <label>Name:</label>
+            <span>CS4550 12631 Web Development SEC01 Fall 2023[BOS-1-TR]</span
+            ><br />
+            <label>Course Code:</label>
+            <span>CS4550.12631.202410</span><br />
+            <label>Blueprint Course:</label>
+            <span>No</span><br />
+            <label>Course Template:</label>
+            <input type="checkbox" id="chkbox-course-template" />
+            <label for="chkbox-course-template">
+              Enable course as a Course Template </label
+            ><br />
+            <label for="time-zone"> Time Zone: </label>
+            <select id="time-zone">
+              <option value="EST">
+                Eastern Time(US&Canada)(-05:00/-04:00)
+              </option>
+              <option value="PST">Pacific Time Zone</option></select
+            ><br />
+            <label>SIS ID:</label>
+            <span>CS4550.12631.202410</span><br />
+            <label>Subaccount:</label>
+            <span>CS Undergrad</span><br />
+            <label for="term">Term:</label>
+            <span>202410_1 Fall 2023 Semester Full Term</span><br />
+            <label for="participation">Participation:</label>
+            <select id="term">
+              <option value="FALL23">Fall 23</option>
+              <option value="WINTER24">Winter 24</option></select
+            ><br />
+            <span
+              >Course Participation is limited to term start and end date.</span
+            ><br />
+            <span>Start</span>
+            <input type="date" id="participation" /><br />
+            <span>End</span>
+            <input type="date" id="participation" /><br />
+            <input type="checkbox" id="chkbox-restrict-before-start" />
+            <label for="chkbox-restrict-before-start">
+              Restrict students from viewing courses before term start date </label
+            ><br />
+            <input type="checkbox" id="chkbox-restrict-after-end" />
+            <label for="chkbox-restrict-after-end">
+              Restrict students from viewing courses after term end date </label
+            ><br />
+            <label for="due-time">Default due time:</label>
+            <select id="due-time">
+              <option value="default">Account default(11:59pm)</option>
+              <option value="morning">11:59am</option></select
+            ><br />
+            <label for="langugage">Langugage:</label>
+            <select id="langugage">
+              <option value="default">English(default)</option>
+              <option value="chinese">Chinese</option></select
+            ><br />
+            <label for="file-storage">File Storage:</label>
+            <select id="file-storage">
+              <option value="default">10000 mega bytes</option>
+              <option value="1000">1000 mega bytes</option></select
+            ><br />
+            <lable>Large Course:</lable>
+            <input type="checkbox" id="large-course" />
+            <label for="large-course">
+              Launch SpeedGrader Filtered by Student Group</label
+            ><br />
+            <lable>Grading Scheme:</lable>
+            <input type="checkbox" id="grading-scheme" />
+            <label for="grading-scheme"> Enable course grading scheme</label
+            ><br />
+            <label for="license">License:</label>
+            <select id="license">
+              <option value="default">Private(Copyrighted)</option></select
+            ><br />
+
+            <button>Update Course Details</button>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
