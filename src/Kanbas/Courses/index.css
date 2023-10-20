@@ -1,0 +1,206 @@
+html {
+  font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+li {
+  list-style: none; /* Remove the default bullet points */
+}
+
+.root-list {
+  padding: 0; /* Remove any default padding */
+}
+
+.root-list li {
+  overflow: hidden;
+}
+
+.root-list li a {
+  width: 82px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  font-size: 0.875rem;
+}
+
+.root-list li a:hover {
+  background-color: lightblue;
+}
+
+.root-list svg {
+  margin-bottom: 5px; /* Adjust the spacing between the icon and text as needed */
+  fill: red; /* Set the fill color of the SVG icon */
+  width: 35px;
+  height: 35px;
+}
+
+.root-list svg.profile {
+  fill: rgb(190, 190, 190); /* Set the fill color of the SVG icon */
+}
+
+.big-profile {
+  fill: rgb(134, 134, 134); /* Set the fill color of the SVG icon */
+}
+
+.root-list img {
+  width: 195px;
+  height: 195px;
+  margin: 0 -75px 0 49px;
+}
+
+td.middle {
+  width: 150px;
+  padding-right: 60px;
+}
+
+td.middle li a {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10px;
+  padding-left: 5px;
+  text-decoration: none;
+  color: red;
+  font-size: 0.875rem;
+}
+
+#selected-middle {
+  color: black;
+  border-left: 2px solid black;
+}
+
+.root-list li a#selected-root {
+  color: red;
+  background-color: white;
+}
+
+h2.profile {
+  margin-top: 50px;
+}
+
+th {
+  text-align: left;
+}
+
+td.root-td {
+  padding-right: 28px;
+}
+
+button.btn {
+  border-radius: 0px;
+}
+
+div.card {
+  width: 250px;
+}
+
+div.card-head {
+  width: 100%;
+  height: 130px;
+  background-color: blue;
+}
+
+.alt {
+  width: 100%;
+  height: 130px;
+  background-color: gray;
+}
+
+/* Additional custom CSS styles */
+.course-card {
+  width: 250px; /* Set the fixed width of the cards */
+  margin: 15px; /* Add margin for spacing between cards */
+}
+
+/* Responsive styles for different screen sizes */
+@media (max-width: 992px) {
+  .course-card {
+    width: 33.33%; /* Display at most 3 courses per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .course-card {
+    width: 50%; /* Display at most 2 courses per row */
+  }
+}
+
+@media (max-width: 576px) {
+  .course-card {
+    width: 100%; /* Display 1 course per row on narrow screens */
+  }
+}
+
+.card-body svg {
+  width: 20px;
+  height: 20px;
+}
+
+.custom-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+}
+
+.custom-breadcrumb .breadcrumb-first + .breadcrumb-item::before {
+  content: " ";
+}
+
+ol li a {
+  color: red;
+}
+
+.breadcrumb {
+  margin-top: 10px;
+}
+
+.breadcrumb-first {
+  margin-left: 23px;
+}
+
+.breadcrumb-second {
+  margin-left: 7px;
+}
+
+.breadcrumb-not-first {
+  margin-top: 5px;
+}
+
+.sandwich {
+  fill: red;
+  width: 20px;
+  height: 20px;
+}
+
+h11 {
+  padding-left: 25px;
+}
+
+.home-list-group .list-group-item {
+  border-left: 3px solid green;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* By default, display 4 items per row */
+  gap: 3px;
+}
+
+.grid-item {
+  padding: 12px;
+}
+
+/* Media query for when the window width decreases */
+@media (max-width: 768px) { /* Adjust this breakpoint as needed */
+  .grid-container {
+      grid-template-columns: repeat(3, 1fr); /* Display 3 items per row */
+  }
+}
