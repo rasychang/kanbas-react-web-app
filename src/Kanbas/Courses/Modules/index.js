@@ -4,7 +4,7 @@ import { View } from 'react-native';
 function Modules() {
   return (
     <div className="row">
-      <div className="col-9 home-right-div">
+      <div className="col-11 home-right-div">
         <h2>Modules</h2>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
           <button class="btn btn-secondary">Collapse All</button>

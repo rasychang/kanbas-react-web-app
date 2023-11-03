@@ -6,7 +6,7 @@ import "./index.css";
 function Home() {
   return (
     <div className="row">
-        <div className="col-6 home-right-div">
+        <div className="col-8 home-right-div">
             <h2>Home</h2>
             <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
             <button class="btn btn-secondary">Collapse All</button>

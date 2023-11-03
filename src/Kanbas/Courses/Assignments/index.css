@@ -1,0 +1,62 @@
+.no_under a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button.btn.btn-secondary {
+    background-color: #E0E1E2;
+    color: #00000099;
+    border: 0px;
+    border-radius: 5px;
+}
+
+button.btn.btn-danger {
+    border-radius: 5px;
+}
+
+button.btn.btn-success {
+    border-radius: 5px;
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 2px;
+    fill: #00000099;
+}
+
+button.btn.btn-danger .btn-icon {
+    fill: white;
+}
+
+div.d-flex {
+    padding-left: 5px;
+    padding-right: 7px;
+}
+
+.assign {
+    margin-top: 6px;
+}
+
+.icon-small {
+    width: 15px;
+    height: 15px;
+}
+
+.sheet {
+    fill: green;
+}
+
+.assignmentlink {
+    margin-top: 4px;
+}
+
+.iconright {
+    margin-top: 9px;
+}
+
+.BsThreeDotsVertical {
+    margin-top: 11px;
+}
