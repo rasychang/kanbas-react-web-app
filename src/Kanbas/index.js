@@ -49,12 +49,6 @@ function Kanbas() {
               path="Dashboard"
               element={
                 <Dashboard
-                  courses={courses}
-                  course={course}
-                  setCourse={setCourse}
-                  addNewCourse={addNewCourse}
-                  deleteCourse={deleteCourse}
-                  updateCourse={updateCourse}
                 />
               }
             />

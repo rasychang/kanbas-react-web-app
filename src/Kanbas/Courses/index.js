@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import JsonPre from "../../Labs/a3/JsonPre";
 import db from "../Database";
@@ -9,12 +9,24 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import "./index.css";
+import * as client from "./client";
 
 function Courses() {
   const { courseId } = useParams();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const [empty, kanbas, courses, id, screen, assignmentId] = pathname.split("/");
-  const course = db.courses.find((course) => course._id === courseId);
+
+  const [course, setCourse] = useState({}); // = db.courses.find((course) => course._id === courseId);
+
+  const fetchCourse = async () => {
+    const course = await client.fetchCourse(courseId);
+    setCourse(course);
+  };
+
+  useEffect(() => {
+    fetchCourse();
+  }, []);
+
   const assignmentName = db.assignments.find((assignment) => assignment._id === assignmentId);
   return (
     <div>

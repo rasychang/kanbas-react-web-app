@@ -11,4 +11,4 @@ function VariablesAndConstants() {
       </div>
    );
 }
-export default VariablesAndConstants
+export default VariablesAndConstants;

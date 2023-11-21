@@ -19,4 +19,4 @@ function IfElse(){
         </div>
     )
 }
-export default IfElse
+export default IfElse;

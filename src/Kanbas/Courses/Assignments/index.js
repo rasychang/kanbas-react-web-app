@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import db from "../../Database";
 import { View } from 'react-native';
@@ -10,18 +10,40 @@ import {
   setAssignment,
 } from "./assignmentReducer";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Icon, Input, Divider } from 'semantic-ui-react'
+import { Button, Icon, Input, Divider } from 'semantic-ui-react';
 import { BiPlus } from 'react-icons/bi';
-import { BsThreeDotsVertical } from 'react-icons/bs'
-import { MdOutlineAssignment } from 'react-icons/md'
-import { BiCheckCircle } from 'react-icons/bi'
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { MdOutlineAssignment } from 'react-icons/md';
+import { BiCheckCircle } from 'react-icons/bi';
+import * as client from "./client";
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignments = useSelector((state) => state.assignmentReducer.assignments);
-  const assignment = useSelector((state) => state.assignmentReducer.assignment);
+  //const assignments = useSelector((state) => state.assignmentReducer.assignments);
+  //const assignment = useSelector((state) => state.assignmentReducer.assignment);
+  const [assignments, setAssignments] = useState([]);
+  const [assignment, setAssignment] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const fetchAssignments = async () => {
+    const assignments = await client.findAssignmentsForCourse(courseId);
+    setAssignments(assignments);
+  };
+
+  const deleteAssignment = async (id) => {
+    try {
+      await client.deleteAssignment(id);
+      const assignments = await client.findAssignmentsForCourse(courseId);
+      setAssignments(assignments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
 
   const courseAssignments = assignments.filter(
     (assignment) => assignment.course === courseId);
@@ -38,7 +60,7 @@ function Assignments() {
               Group
             </div>
           </button>
-          <button className="btn btn-danger" onClick={() => {navigate(`/Kanbas/Courses/${courseId}/Assignments/new`);}}>
+          <button className="btn btn-danger" onClick={() => {navigate(`/Kanbas/Courses/${courseId}/Assignments/${new Date().getTime().toString()}`);}}>
             <div className="d-flex">
               <BiPlus className='btn-icon' />
               Assignment
@@ -73,7 +95,7 @@ function Assignments() {
               <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
                 <BiCheckCircle className='btn-icon sheet iconright' />
                 <BsThreeDotsVertical className='btn-icon icon-small BsThreeDotsVertical' />
-                <button className="btn btn-danger" onClick={() => dispatch(deleteAssignment(assignment._id))}>
+                <button className="btn btn-danger" onClick={() => deleteAssignment(assignment._id)}>
                   Delete
                 </button>
               </View>

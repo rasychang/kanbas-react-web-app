@@ -1,23 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import db from "../../Database";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  addModule,
-  deleteModule,
-  updateModule,
-  setModule,
-} from "./modulesReducer";
 import { View } from 'react-native';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiOutlineCaretRight } from 'react-icons/ai';
-import { Message, Icon, Button } from 'semantic-ui-react'
+import { Message, Icon, Button } from 'semantic-ui-react';
+import * as client from "./client";
 
 function ModuleList() {
   const { courseId } = useParams();
-  const modules = useSelector((state) => state.modulesReducer.modules);
-  const module = useSelector((state) => state.modulesReducer.module);
-  const dispatch = useDispatch();
+  const [modules, setModules] = useState([]);
+  const [module, setModule] = useState({});
+
+  const addModule = async () => {
+    const newModule = await client.addModule(courseId, module);
+    setModule(newModule);
+    setModules([newModule, ...modules]);
+  };
+
+  const updateModule = async () => {
+    const newModule = await client.updateModule(module._id, module);
+    setModule(newModule);
+    const modules = await client.findModulesForCourse(courseId);
+    setModules(modules);
+  };
+
+  const fetchModules = async () => {
+    const modules = await client.findModulesForCourse(courseId);
+    setModules(modules);
+  };
+
+  const deleteModule = async (id) => {
+    try {
+      await client.deleteModule(id);
+      const modules = await client.findModulesForCourse(courseId);
+      setModules(modules);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchModules();
+  }, []);
 
   return (
     <ul className="list-group">
@@ -25,20 +50,20 @@ function ModuleList() {
         <input style={{ width: 255 }}
           value={module.name}
           onChange={(e) =>
-            dispatch(setModule({ ...module, name: e.target.value }))
+            setModule({ ...module, name: e.target.value })
           }
         />
         <br />
         <textarea style={{ width: 255 }}
           value={module.description}
           onChange={(e) =>
-            dispatch(setModule({ ...module, description: e.target.value }))
+            setModule({ ...module, description: e.target.value })
           }
         />
         <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-          <button className="btn btn-primary" onClick={() => dispatch(updateModule(module))}>Update</button>
+          <button className="btn btn-primary" onClick={updateModule}>Update</button>
           <button className="btn btn-success"
-            onClick={() => dispatch(addModule({ ...module, course: courseId }))}
+            onClick={addModule}
           >
             Add
           </button>
@@ -64,10 +89,10 @@ function ModuleList() {
                   <p>{module.description}</p>
                 </div>
                 <div className="d-flex justify-content-end">
-                  <button className="btn btn-danger" onClick={() => dispatch(deleteModule(module._id))}>
+                <button className="btn btn-danger" onClick={() => deleteModule(module._id)}>
                     Delete
                   </button>
-                  <button className="btn btn-success" onClick={() => dispatch(setModule(module))}>Edit</button>
+                  <button className="btn btn-success" onClick={() => setModule(module)}>Edit</button>
                 </div>
               </Message>
             </div>

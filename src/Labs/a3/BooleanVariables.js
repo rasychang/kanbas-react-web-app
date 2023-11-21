@@ -27,4 +27,4 @@ function BooleanVariables() {
     </div>
     );
   }
-  export default BooleanVariables
+  export default BooleanVariables;

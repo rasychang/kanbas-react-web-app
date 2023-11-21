@@ -3,8 +3,8 @@ function AddingAndRemovingDataToFromArrays(){
     console.log(numberArray1);
     let stringArray1 = ['string1', 'string2'];
     console.log(stringArray1);
-    numberArray1.push(6);  
-    console.log(numberArray1);       // adding new items
+    numberArray1.push(6);  // adding new items
+    console.log(numberArray1);       
     stringArray1.push('string3');
     console.log(stringArray1);
     numberArray1.splice(2, 1);  // remove 1 item starting at 2
