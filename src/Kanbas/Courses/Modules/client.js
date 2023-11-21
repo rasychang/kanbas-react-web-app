@@ -3,6 +3,7 @@ import axios from "axios";
 const COURSES_URL = `${process.env.REACT_APP_API_URL}/api/courses`;
 const MODULES_URL = `${process.env.REACT_APP_API_URL}/api/modules`;
 
+
 export const addModule = async (courseId, module) => {
   const response = await axios.post(
     `${COURSES_URL}/${courseId}/modules`,
