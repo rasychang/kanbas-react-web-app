@@ -49,14 +49,6 @@ function Signup() {
               ...credentials,
               email: e.target.value
             })} />
-            <input type="text" id="zip-code" placeholder="Zip Code" onChange={(e) => setCredentials({
-              ...credentials,
-              zipCode: e.target.value
-            })} />
-            <input type="text" id="phone" placeholder="Phone" onChange={(e) => setCredentials({
-              ...credentials,
-              phone: e.target.value
-            })} />
             <DatePicker
               placeholderText="Date of Birth"
               selected={credentials.dob}
