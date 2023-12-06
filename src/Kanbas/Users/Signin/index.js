@@ -4,17 +4,23 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 function Signin() {
+  const [error, setError] = useState("");
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const navigate = useNavigate();
   const signin = async () => {
-    await client.signin(credentials);
-    navigate("/Kanbas/Account");
+    try {
+      await client.signin(credentials);
+      navigate("/Kanbas/Account");
+    } catch (err) {
+      setError(`Login failed, please register.`);
+    }
   };
 
   return (
     <div className="login-container">
       <form className="login-form">
         <h2>Signin</h2>
+        {error && <div>{error}</div>}
         <div className="input-container2">
           <input type="text" placeholder="Username" onChange={(e) => setCredentials({
             ...credentials,

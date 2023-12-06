@@ -1,6 +1,8 @@
 import * as client from "../Users/client";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
+
 function Account() {
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
@@ -8,36 +10,76 @@ function Account() {
     const account = await client.account();
     setAccount(account);
   };
+
+  const signout = async () => {
+    await client.signout();
+    navigate("/Kanbas/Signin");
+  };
+
+  const save = async () => {
+    await client.updateUser(account);
+  };
+
   useEffect(() => {
     fetchAccount();
   }, []);
+
   return (
-    <div className="w-50">
+    <div>
       <h1>Account</h1>
       {account && (
         <div>
-          <input value={account.password}
-            onChange={(e) => setAccount({ ...account,
-              password: e.target.value })}/>
-          <input value={account.firstName}
-            onChange={(e) => setAccount({ ...account,
-              firstName: e.target.value })}/>
-          <input value={account.lastName}
-            onChange={(e) => setAccount({ ...account,
-              lastName: e.target.value })}/>
-          <input value={account.dob}
-            onChange={(e) => setAccount({ ...account,
-              dob: e.target.value })}/>
-          <input value={account.email}
-            onChange={(e) => setAccount({ ...account,
-              email: e.target.value })}/>
-          <select onChange={(e) => setAccount({ ...account,
-              role: e.target.value })}>
-            <option value="USER">User</option>
-            <option value="ADMIN">Admin</option>
-            <option value="FACULTY">Faculty</option>
-            <option value="STUDENT">Student</option>
-          </select>
+          <div className="login-container2">
+            <div className="input-container2">
+              <h4>User: {account.username}</h4>
+              Password:
+              <input type="text" value={account.password}
+                onChange={(e) => setAccount({
+                  ...account,
+                  password: e.target.value
+                })} />
+              First Name:
+              <input type="text" value={account.firstName}
+                onChange={(e) => setAccount({
+                  ...account,
+                  firstName: e.target.value
+                })} />
+              Last Name:
+              <input type="text" value={account.lastName}
+                onChange={(e) => setAccount({
+                  ...account,
+                  lastName: e.target.value
+                })} />
+              Date of Birth:
+              <input type="text" value={account.dob}
+                onChange={(e) => setAccount({
+                  ...account,
+                  dob: e.target.value
+                })} />
+              Email:
+              <input type="text" value={account.email}
+                onChange={(e) => setAccount({
+                  ...account,
+                  email: e.target.value
+                })} />
+              Role:
+              <select onChange={(e) => setAccount({
+                ...account,
+                role: e.target.value
+              })}
+                value={account.role}
+              >
+                <option value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+                <option value="FACULTY">Faculty</option>
+                <option value="STUDENT">Student</option>
+              </select>
+            </div>
+          </div>
+          <div className="button-container">
+            <button type="button" className="btn btn-primary login" onClick={save}>Save</button>
+            <button type="button" className="btn btn-primary login" onClick={signout}>Signout</button>
+          </div>
         </div>
       )}
     </div>
