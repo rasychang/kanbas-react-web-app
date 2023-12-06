@@ -8,10 +8,12 @@ import { MdOndemandVideo } from "react-icons/md";
 import { TfiHelpAlt } from "react-icons/tfi";
 import "./index.css";
 function KanbasNavigation() {
-  const links = ["Account", "Dashboard", "Courses", "Calendar", "Inbox", "History", "Studio", "Commons", "Help"];
+  const links = ["Account", "Signin", "Signup", "Dashboard", "Courses", "Calendar", "Inbox", "History", "Studio", "Commons", "Help"];
 
   const linkToIconMap = {
     Account: <AccountIcon className="wd-icon" />,
+    Signin: <AccountIcon className="wd-icon" />,
+    Signup: <AccountIcon className="wd-icon" />,
     Dashboard: <DashboardIcon className="wd-icon" />,
     Courses: <CoursesIcon className="wd-icon" />,
     Calendar: <CalendarIcon className="wd-icon" />,
