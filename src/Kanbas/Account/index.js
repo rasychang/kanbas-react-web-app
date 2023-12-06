@@ -1,7 +1,9 @@
 import * as client from "../Users/client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./index.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function Account() {
   const [account, setAccount] = useState(null);
@@ -51,11 +53,16 @@ function Account() {
                   lastName: e.target.value
                 })} />
               Date of Birth:
-              <input type="text" value={account.dob}
+              <DatePicker
+                placeholderText="Date of Birth"
+                selected={new Date(account.dob)}
                 onChange={(e) => setAccount({
                   ...account,
-                  dob: e.target.value
-                })} />
+                  dob: e
+                })}
+                dateFormat="yyyy-MM-dd" // Customize the date format
+              />
+              
               Email:
               <input type="text" value={account.email}
                 onChange={(e) => setAccount({
@@ -78,6 +85,10 @@ function Account() {
           </div>
           <div className="button-container">
             <button type="button" className="btn btn-primary login" onClick={save}>Save</button>
+            <Link to="/Kanbas/admin/users" className="btn btn-warning w-100">
+              Users
+            </Link>
+
             <button type="button" className="btn btn-primary login" onClick={signout}>Signout</button>
           </div>
         </div>

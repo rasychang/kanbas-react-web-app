@@ -5,6 +5,7 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import Signin from "./Users/Signin";
 import Signup from "./Users/Signup";
+import UserTable from "./Users/Table";
 import db from "./Database";
 import { useState } from "react";
 import store from "./store";
@@ -48,6 +49,7 @@ function Kanbas() {
             <Route path="/" element={<Navigate to="Dashboard" />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/admin/users" element={<UserTable />} />
             <Route path="Account" element={<Account />} />
             <Route
               path="Dashboard"
